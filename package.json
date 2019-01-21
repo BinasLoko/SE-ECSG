@@ -1,0 +1,29 @@
+{
+  "name": "express-static-pages",
+  "version": "1.0.0",
+  "description": "An ejs serving express api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PauloGasparSv/ExpressStaticPagesExample.git"
+  },
+  "keywords": [
+    "Binas",
+    "Ejs",
+    "Express",
+    "Node"
+  ],
+  "author": "Paulo Vale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PauloGasparSv/ExpressStaticPagesExample/issues"
+  },
+  "homepage": "https://github.com/PauloGasparSv/ExpressStaticPagesExample#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
