@@ -9,6 +9,7 @@ const home = require('./controllers/home_controller');
 
 /* Middlewares */
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 /* Routing */
 app.use('/', home);
