@@ -1,15 +1,17 @@
 'use strict';
-
 /* Settings */
 const express = require('express');
 const app = express();
 const port = 8000;
 
+/* Controller Imports */
+const home = require('./controllers/home_controller');
+
 /* Middlewares */
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 /* Routing */
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use('/', home);
 
 /* Server */
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Running at localhost:${port}!`));
