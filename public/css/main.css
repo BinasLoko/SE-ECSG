@@ -58,3 +58,12 @@ div > a {
         top: 50%;
     }
 }
+
+body{
+    background-color: #F0F8FF;
+}
+
+body > p > a{
+    color: #050505;
+    font-weight: bold;
+}

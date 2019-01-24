@@ -1,11 +1,6 @@
-### Basic Express Api with EJS pages.
+### Sistema especialista para avaliação de engenharia cognitiva em serious games.
 
-To run the project, download it or clone it first.
+Este repositório foi criado para comportar o meu projeto para o trabalho de conclusão de curso (TCC).
 
-Then, open the folder in your terminal and run:
 
-`npm install`
-
-Then
-
-`node app.js`
+Agradeço ao `Paulo Gaspar Sena do Vale` por estar me ajudando com questões de desenvolvimento.

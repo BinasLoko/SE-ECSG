@@ -8,20 +8,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PauloGasparSv/ExpressStaticPagesExample.git"
+    "url": "git+https://github.com/BinasLoko/SE-ECSG.git"
   },
   "keywords": [
-    "Binas",
+    "Binatti",
     "Ejs",
     "Express",
-    "Node"
+    "Node",
+    "Expert System",
+    "Sistema Especialista",
+    "Serious Game",
+    "Engenharia Cognitiva",
+    "Cognitive Engineering"
   ],
-  "author": "Paulo Vale",
+  "author": "Mateus Gomes Binatti",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PauloGasparSv/ExpressStaticPagesExample/issues"
+    "url": "https://github.com/BinasLoko/SE-ECSG.git"
   },
-  "homepage": "https://github.com/PauloGasparSv/ExpressStaticPagesExample#readme",
+  "homepage": "https://github.com/BinasLoko/SE-ECSG#readme",
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.4"
