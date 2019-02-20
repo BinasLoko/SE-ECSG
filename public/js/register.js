@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 
         $('.finalizar').on('click', function () {
-            
+
             name_value = $('#nome').val();
             last_name = $('#sobrenome').val();
             country_value = $('.pais').val();
@@ -27,6 +27,20 @@ $(document).ready(function () {
             user_password = $('#password').val();
             confirm_passowrd = $('#confirmPassword').val();
             email_value = $('#email').val();
+
+
+            // if(user_password != confirm_password){
+            //     $('#username').val("");
+            //     $('#password').val("");
+                
+            //     $("#password").attr('style',  'background-color:#FEC2C2');
+            //     $("#confirmPassword").attr('style',  'background-color:#FEC2C2');
+
+            //     alert('Inconsistência nas senhas!');
+            // }
+
+
+
         });
     }
 
