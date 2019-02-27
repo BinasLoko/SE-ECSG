@@ -48,3 +48,4 @@ module.exports = router;
 router.get('/list', (req, res) =>{
     execSQLQuery('select * from pessoas', res);
 })
+
