@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
@@ -7,25 +8,27 @@
     <title>Login SE-ECSG</title>
     <script src="/js/main.js"></script>
 </head>
+
 <body>
-    
-    <div>
-        <label for="nome">Usuário:</label>
-        <input type="text" id="nome" />
-    </div>
+    <form action="login" method="POST">
+        <div>
+            <label for="nome">Usuário:</label>
+            <input type="text" name="username" id="nome" />
+        </div>
 
-    <div>
-        <label for="password">Senha:</label>
-        <input type="password" name="password">
-    </div>
-    
-    <div class="button">
-        <button type="submit">Login</button>
-    </div>
+        <div>
+            <label for="password">Senha:</label>
+            <input type="password" name="password" id="password">
+        </div>
 
-    <div class="button">
-        <button type="reset">Resetar</button>
-    </div>
-    
+        <div class="button">
+            <button type="submit">Login</button>
+        </div>
+
+        <div class="button">
+            <button type="reset">Resetar</button>
+        </div>
+    </form>
 </body>
+
 </html>
