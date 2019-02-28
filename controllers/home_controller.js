@@ -43,14 +43,6 @@ router.get('/register', (req, res) =>
 router.post('/register', (req, res) => {
     const body_values = req.body;
 
-    execSQLQuery('INSERT INTO pessoas SET ?', body_values, (err, res) => {
-        if (err) throw err;
-        console.log('Last insert ID:', res.insertId);
-    });
-
-
-
-
 });
 
 
