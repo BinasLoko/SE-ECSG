@@ -61,17 +61,17 @@ router.post('/register', (req, res) => {
         )`;
 
         var teste = body_values.nome;
-      let form_values = {
-            nome: body_values.nome,
-            sobrenome: body_values.sobrenome,
-            pais_residencia: body_values.pais,
-            sexo: body_values.sexo,
-            telefone: body_values.telefone,
-            data_nascimento: body_values.nascimento,
-            nome_usuario: body_values.username,
-            senha_usuario: body_values.password,
-            email_usuario: body_values.email        
-      }         
+      let form_values = [
+            body_values.nome,
+            body_values.sobrenome,
+            body_values.pais,
+            body_values.sexo,
+            body_values.telefone,
+            body_values.nascimento,
+            body_values.username,
+            body_values.password,
+            body_values.email        
+      ]
 
     execSQLQuery(query, form_values)
     .then(dbResponse => {
@@ -83,6 +83,7 @@ router.post('/register', (req, res) => {
 
     //todo
     //se der erro, botar as infos no localstorage e atribuir 
+    //botar maxlength nos campos
 });
 
 
