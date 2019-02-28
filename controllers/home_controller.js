@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 
-function execSQLQuery(sqlQry, res) {
+function execSQLQuery(sqlQry, queryValues) {
     const connection = mysql.createConnection({
         host: 'localhost',
         port: 3306,
@@ -10,14 +10,13 @@ function execSQLQuery(sqlQry, res) {
         password: '1234',
         database: 'expertsystemdb'
     });
+    return new Promise((resolve, reject) => {
+        connection.query(sqlQry, queryValues,  function (error, results, fields) {
 
-    connection.query(sqlQry, function (error, results, fields) {
-        if (error)
-            res.json(error);
-        else
-            res.json(results);
-        connection.end();
-        console.log('executou!');
+            connection.end();
+            if (error) return reject(error);
+            resolve(results);
+        });
     });
 }
 
@@ -43,6 +42,47 @@ router.get('/register', (req, res) =>
 router.post('/register', (req, res) => {
     const body_values = req.body;
     console.log(body_values);
+        
+    let query = `INSERT INTO pessoas 
+        (   
+            nome, 
+            sobrenome, 
+            pais_residencia, 
+            sexo,
+            telefone, 
+            data_nascimento, 
+            nome_usuario, 
+            senha_usuario, 
+            email_usuario
+        ) 
+        VALUES
+        (
+            ?,?,?,?,?,?,?,?,?
+        )`;
+
+        var teste = body_values.nome;
+      let form_values = {
+            nome: body_values.nome,
+            sobrenome: body_values.sobrenome,
+            pais_residencia: body_values.pais,
+            sexo: body_values.sexo,
+            telefone: body_values.telefone,
+            data_nascimento: body_values.nascimento,
+            nome_usuario: body_values.username,
+            senha_usuario: body_values.password,
+            email_usuario: body_values.email        
+      }         
+
+    execSQLQuery(query, form_values)
+    .then(dbResponse => {
+        res.redirect('/login');
+    })
+    .catch(error => {
+       res.json('fuck'); 
+    });
+
+    //todo
+    //se der erro, botar as infos no localstorage e atribuir 
 });
 
 
@@ -51,7 +91,8 @@ router.get('/login', (req, res) =>
 
 module.exports = router;
 
-router.get('/list', (req, res) => {
-    execSQLQuery('select * from pessoas', res);
+router.get('/list', async (req, res) => {
+    const dbResponse = await execSQLQuery('select * from pessoas');
+res.json(dbResponse);
 })
 
