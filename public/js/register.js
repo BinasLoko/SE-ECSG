@@ -36,19 +36,7 @@ $(document).ready(function () {
                 $("#confirmPassword").attr('style', 'background-color:#FEC2C2');
 
                 alert('Inconsistência nas senhas!');
-            } else if (name_value == "" || last_name == "" || country_value == ""
-                || birth_value == "" || user_name == "" || user_password == ""
-                || confirm_password == "" || email_value == "") {
-                alert('Preencha os campos!');
-            } else {
-                var sql = "insert into pessoas (nome, sobrenome, pais_residencia, sexo, telefone, data_nascimento, nome_usuario, senha_usuario, email_usuario) VALUES ?";
-                var values = [name_value, last_value, country_value,
-                                sex_value, telephone_value, birth_value, 
-                                user_name, user_password, email_value];
             }
-
-
-
         });
     }
     getRegisterInputs();

@@ -15,20 +15,20 @@
 
 <body>
     <h1>Informações pessoais</h1>
-    <form>
+    <form method="POST" action="/register">
         <div class="nomes">
             <div class="nome">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" required="required">
+                <input type="text" name="nome" id="nome" required="required">
             </div>
             <div class="sobrenome">
                 <label for="sobrenome">Sobrenome:</label>
-                <input type="text" id="sobrenome" required="required">
+                <input type="text" name="sobrenome" id="sobrenome" required="required">
             </div>
         </div>
         <div>
             <label for="residencia">País onde reside:</label>
-            <select class="pais">
+            <select class="pais" name="pais">
                 <option value="África do Sul">África do Sul</option>
                 <option value="Albânia">Albânia</option>
                 <option value="Alemanha">Alemanha</option>
@@ -209,8 +209,8 @@
 
         <div>
             <label for="sexo">Sexo:</label>
-            <select class="sexo">
-                <option selected>Selecione se desejar</option>
+            <select class="sexo" name="sexo">
+                <option value="nenhum" selected>Selecione se desejar</option>
                 <option value="masculino">Masculino</option>
                 <option value="feminino">Feminino</option>
                 <option value="omisso">Não me identifico com as opções acima</option>
@@ -219,24 +219,24 @@
 
         <div>
             <label for="telefone">Telefone:</label>
-            <input type="number" id="telefone" />
+            <input type="number" name="telefone" id="telefone" />
         </div>
 
         <div>
             <label for="nascimento">Data de nascimento:</label>
-            <input type="date" class="nascimento" name="nascimento" required="required" />
+            <input type="date" name="nascimento" id="nascimento" required="required" />
         </div>
 
         <h1>Informações de acesso</h1>
 
         <div>
             <label for="username">Nome de usuário:</label>
-            <input type="text" id="username" required="required" />
+            <input type="text" name="username" id="username" required="required" />
         </div>
 
         <div>
             <label for="password">Senha:</label>
-            <input type="password" id="password" required="required" />
+            <input type="password" name="password" id="password" required="required" />
         </div>
 
         <div>
@@ -246,11 +246,11 @@
 
         <div>
             <label for="email">E-mail:</label>
-            <input type="email" id="email" required="required" />
+            <input type="email" name="email" id="email" required="required" />
         </div>
 
         <div class="button finalizar">
-            <button type="button">Finalizar cadastro</button>
+            <button type="submit">Finalizar cadastro</button>
         </div>
 
         <div class="button">
