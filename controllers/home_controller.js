@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+const jwt = require('jsonwebtoken');
+const authenticationConfig = require('../public/config/auth');
 
 function execSQLQuery(sqlQry, queryValues) {
     const connection = mysql.createConnection({
@@ -98,6 +100,7 @@ router.get('/list', async (req, res) => {
 })
 
 router.post('/login', (req, res) => {
+    const user = req.body;
     const username = req.body.username;
     const password = req.body.password;
 
@@ -119,6 +122,14 @@ router.post('/login', (req, res) => {
         });
     }
 
+    form_values.password = undefined;
+
+    const token = jwt.sign({id: user.id}, authenticationConfig.secret, {
+        expiresIn: 86400,
+    });
+    console.log(user.id);
+    console.log(token);
+    res.json({user, token});
 
 
 });
