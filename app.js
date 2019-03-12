@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 8000;
+const port = 8080;
 
 
 //configurando o body parser para pegar POSTS mais tarde

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 
+
 function execSQLQuery(sqlQry, queryValues) {
     const connection = mysql.createConnection({
         host: 'localhost',
@@ -98,6 +99,7 @@ router.get('/list', async (req, res) => {
 })
 
 router.post('/login', (req, res) => {
+    const user = req.body;
     const username = req.body.username;
     const password = req.body.password;
 
@@ -119,6 +121,8 @@ router.post('/login', (req, res) => {
         });
     }
 
+    form_values.password = undefined;
+  
 
 
 });
