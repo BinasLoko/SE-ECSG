@@ -33,6 +33,8 @@ router.get('/', (req, res) => {
 router.get('/home', (req, res) =>
     res.render('../views/home.ejs'));
 
+router.get('/gameform', (req, res) =>
+    res.render('../views/gameform.ejs'));
 
 router.get('/about', (req, res) =>
     res.render('../views/about.ejs'));
@@ -111,18 +113,18 @@ router.post('/login', (req, res) => {
 
     let form_values = [username, password];
 
-    if(username && password){
+    if (username && password) {
         execSQLQuery(query, form_values)
-        .then(dbResponse => {
-            res.redirect('/home');
-        })
-        .catch(error => {
-            res.json('fuck');
-        });
+            .then(dbResponse => {
+                res.redirect('/home');
+            })
+            .catch(error => {
+                res.json('fuck');
+            });
     }
 
     form_values.password = undefined;
-  
+
 
 
 });
