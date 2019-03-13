@@ -73,8 +73,11 @@ input {
      }
 
      .btn-reset{
-        margin-left: 65px;
         background-color: #bfbfbf;
+     }
+
+     .btn-final{
+        margin-left: 65px;  
      }
 
      ::placeholder { 
