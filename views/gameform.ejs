@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrando-se no ECSG</title>
+    <link rel="stylesheet" href="/css/register.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <h2>Formulário para cadastro de serious game</h2>
+    <form method="POST" action="/gameform">
+        <section class="grid grid-template-rows">
+            <div class="nome form-align">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" placeholder="Digite o nome do serious game" id="nome" maxlength="20" required="required" class="teste">
+            </div>
+            <div class="sobrenome form-align">
+                <label for="genero">Gênero:</label>
+                <input type="text" name="genero" id="genero" placeholder="Digiteo o gênero do serious game" maxlength="30" required="required" class="teste">
+            </div>
+
+            <div class="form-align form-top">
+                <label for="foco">Selecione o foco do serious game</label>
+                <select class="foco teste" name="foco">
+                    <option value="Treinamento">Treinamento sobre algum assunto</option>
+                    <option value="Postura">Mudança de atitude</option>
+                    <option value="Alemanha">Disseminação de conhecimento</option>
+                    <option value="Andorra">Alertar questões naturais</option>
+                </select>
+            </div>
+
+
+            <div class="form-align form-top">
+                <label for="plataforma">Plataforma:</label>
+                <select class="plataforma teste" name="plataforma" multiple>
+                    <option value="windows" selected>Windows</option>
+                    <option value="mac">Mac</option>
+                    <option value="linux">Linux</option>
+                    <option value="android">Masculino</option>
+                    <option value="ios">Feminino</option>
+                    <option value="omisso">Não me identifico com as opções acima</option>
+                </select>
+            </div>
+
+            <div class="form-align">
+                <label for="telefone">Telefone:</label>
+                <input type="number" name="telefone" placeholder="Seu número para contato" id="telefone" maxlength="15" class="teste" />
+            </div>
+
+            <div class="form-align">
+                <label for="nascimento">Data de lançamento:</label>
+                <input type="date" name="lancamento" id="lancamento" required="required" class="teste" />
+            </div>
+            <div class="form-align form-top">
+                <label for="username">Nome de usuário:</label>
+                <input type="text" name="username" id="username" placeholder="Credencial de acesso" maxlength="10" required="required" class="teste" />
+            </div>
+
+            <div class="form-align form-top">
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" maxlength="40" placeholder="E-mail para contato" required="required" class="teste" />
+            </div>
+
+            <div class="form-align">
+                <label for="password">Senha:</label>
+                <input type="password" name="password" id="password"placeholder="Senha para acesso ao sistema" maxlength="10" required="required" class="teste" />
+            </div>
+
+            <div class="form-align">
+                <label for="confirmPassword">Confirme sua senha:</label>
+                <input type="password" id="confirmPassword" placeholder="Preencher com o mesmo valor do campo senha" required="required" class="teste" />
+            </div>
+        </section>
+        <div class="buttons">
+            <button type="reset" class="btn-reset">Resetar preenchimentos</button>
+            <button type="submit" class="btn-final">Finalizar cadastro</button>            
+        </div>
+
+    </form>
+    <script src="/js/register.js"></script>
+</body>
+
+</html>
