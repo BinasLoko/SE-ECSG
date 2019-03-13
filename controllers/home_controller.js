@@ -36,6 +36,9 @@ router.get('/home', (req, res) =>
 router.get('/gameform', (req, res) =>
     res.render('../views/gameform.ejs'));
 
+router.get('/heuristicform', (req, res) =>
+    res.render('../views/heuristicform.ejs'));
+
 router.get('/about', (req, res) =>
     res.render('../views/about.ejs'));
 
