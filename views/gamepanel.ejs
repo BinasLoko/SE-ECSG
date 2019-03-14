@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrando-se no ECSG</title>
+    <link rel="stylesheet" href="/css/gamepanel.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <h2>Painel para gerenciamento dos serious games cadastrados</h2>
+
+    <form method="GET" action="/gamepanel">
+        <div class="buttons">
+            <a href="/gameform" class="insert_game">Cadastrar serious game</a>
+        </div>
+        <table>
+            <tr>
+                <th>Serious game</th>
+                <th>Avaliação heurística</th>
+                <th>Ação</th>
+            </tr>
+            <tr class="sg_block">
+                <td name="sg_name"></td>
+                <td name="sg_heuristic"></td>
+                <td name="sg_action"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

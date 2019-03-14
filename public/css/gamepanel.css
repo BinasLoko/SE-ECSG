@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 90px;
+    margin-top: 32px;
+  }
+
+table{
+    width: 100%;
+    margin-top: 5%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+  }
+  th{
+      width: 350px;
+  }
+
+  th, td{
+      height: 40px;
+      text-align: center;
+  }
+
+
+.insert_game{
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1.3333333;
+    text-align: center;
+    border: none;
+    outline: none;
+    padding: 8px 28px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0px 1px 4px 0px #00000052;
+    transition: 0.4s;
+    background-color: #67bff4;
+    text-decoration:none; 
+ }
+
+ .insert_game:hover{
+    background-color: #509bc5;
+ }
+
+ .buttons{
+     position: relative;
+     top: 35px;
+ }

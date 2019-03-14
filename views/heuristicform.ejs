@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sistema Especialista ECSG</title>
     <link rel="stylesheet" href="/css/heuristicform.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -14,7 +15,7 @@
 <div class="wrap">
         <h2 class="likert-header">Formulário para avaliação de serious game</h2>
         <form method="POST" action="/heuristicform">
-          <label class="statement">Ao perceber que o jogador não está conseguindo progredir, o jogo adapta a dificuldade dos desafios às habilidades do praticante (adaptatividade).</label>
+          <!-- <label class="statement">Ao perceber que o jogador não está conseguindo progredir, o jogo adapta a dificuldade dos desafios às habilidades do praticante (adaptatividade).</label>
           <ul class='likert'>
             <li>
               <input type="radio" name="likert-one" value="strong_disagree" required>
@@ -450,7 +451,7 @@
               <input type="radio" name="likert-eighteen" value="strong_agree">
               <label>Concordo plenamente</label>
             </li>
-          </ul>
+          </ul>  -->
           <label class="statement">O sistema apresenta feedback imediato para as ações do usuário (reconhecimento por rastreamento) sem requerer tempo adicional (evitando a expectativa e insatisfação do usuário).</label>
           <ul class='likert'>
             <li>
@@ -480,6 +481,7 @@
                 <button type="submit" class="btn-final">Finalizar cadastro</button>    
           </div>
         </form>
+        <script src="/js/inference.js"></script>
       </div>
       </body>
       </html>
