@@ -47,7 +47,7 @@ router.get('/register', (req, res) =>
 
     router.post('/heuristicform', (req, res) =>{
         const body_values = req.body;
-        
+        console.log(body_values)
     })
 
 router.post('/register', (req, res) => {
