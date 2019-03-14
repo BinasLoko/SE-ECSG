@@ -45,6 +45,11 @@ router.get('/about', (req, res) =>
 router.get('/register', (req, res) =>
     res.render('../views/register.ejs'));
 
+    router.post('/heuristicform', (req, res) =>{
+        const body_values = req.body;
+        
+    })
+
 router.post('/register', (req, res) => {
     const body_values = req.body;
     console.log(body_values);
