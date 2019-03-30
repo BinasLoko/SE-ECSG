@@ -39,6 +39,9 @@ router.get('/gameform', (req, res) =>
 router.get('/heuristicform', (req, res) =>
     res.render('../views/heuristicform.ejs'));
 
+router.get('/heuristicreport', (req, res) =>
+    res.render('../views/heuristicreport.ejs'));
+
 router.get('/about', (req, res) =>
     res.render('../views/about.ejs'));
 
@@ -49,8 +52,11 @@ router.get('/gamepanel', (req, res) =>
     res.render('../views/gamepanel.ejs'));
 
 router.post('/heuristicform', (req, res) => {
-   /* const body_values = req.body;
-    console.log(body_values)*/
+    /* const body_values = req.body;
+     console.log(body_values)*/
+
+    // por hora, a parte do banco ficará mockada.
+    res.redirect('/heuristicreport');
 })
 
 router.post('/register', (req, res) => {
