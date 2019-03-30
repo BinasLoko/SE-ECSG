@@ -18,17 +18,12 @@ $(document).ready(function () {
             debugger
 
 
-            let heuristic_list = [{ heuristic_one }, { heuristic_three }, { heuristic_five }];
+            let heuristic_list = [{ one_return }, { three_return }, { heuristic_five }];
 
 
 
             localStorage.setItem('heuristic_values', JSON.stringify(heuristic_list));
             let heuristic_result = localStorage.getItem('heuristic_values');
-            console.log(JSON.parse(heuristic_result));
-            localStorage.removeItem('heuristic_values');
-
-
-
         });
 
 
