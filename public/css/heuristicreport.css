@@ -15,3 +15,17 @@ h2{
     margin-bottom: 46px;
     margin-top: 32px;
 }
+
+.report-title{
+    padding-top: 65px;
+    font-size: 20px;
+}
+
+.heuristics-statement{
+    padding-top: 50px;
+    font-size: 18px;
+}
+
+.heuristic-response{
+    padding: 0 40px 0 40px;
+}

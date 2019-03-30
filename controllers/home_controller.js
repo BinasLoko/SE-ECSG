@@ -54,6 +54,9 @@ router.get('/gamepanel', (req, res) =>
 router.post('/heuristicform', (req, res) => {
     /* const body_values = req.body;
      console.log(body_values)*/
+
+    // por hora, a parte do banco ficará mockada.
+    res.redirect('/heuristicreport');
 })
 
 router.post('/register', (req, res) => {

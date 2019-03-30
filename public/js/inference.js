@@ -13,12 +13,15 @@ $(document).ready(function () {
 
             let one_return = setHeuristicOneValue(heuristic_one);
             let three_return = setHeuristicThreeValue(heuristic_three);
+            let five_return = setHeuristicFiveValue(heuristic_five);
+            
 
+            
             
             debugger
 
 
-            let heuristic_list = [{ one_return }, { three_return }, { heuristic_five }];
+            let heuristic_list = [{ one_return }, { three_return }, { five_return }];
 
 
 
@@ -61,6 +64,21 @@ $(document).ready(function () {
         return three_text;
     }
 
+    function setHeuristicFiveValue(five_value) {
+        let five_text;
+        if (five_value == "strong_disagree") {
+            five_text = "Antes de incluir termos no serious game, é necessário revê-los para ver se existe sinergia com o universo apresentado, sem esquecer que, nem sempre, os jogadores possuem o conhecimento técnico desejado quando estão jogando o serious game. Caso alguns jogadores não apresentem dificuldades, mas outros sim, recomendamos uma revisão nos termos apresentados ou, se realmente for necessário a presença desses termos, incluir o seu significado em algum lugar de fácil acesso ao jogador, pois o jogo deve ser aproveitado por todos e não por alguns. É muito frustrante ter de interromper a experiência para pesquisar o significado de diversos termos.";
+        } else if (five_value == "disagree") {
+            five_text = "Antes de incluir termos no serious game, é necessário revê-los para ver se existe sinergia com o universo apresentado, sem esquecer que, nem sempre, os jogadores possuem o conhecimento técnico desejado quando estão jogando o serious game. Caso alguns jogadores não apresentem dificuldades, mas outros sim, recomendamos uma revisão nos termos apresentados ou, se realmente for necessário a presença desses termos, incluir o seu significado em algum lugar de fácil acesso ao jogador, pois o jogo deve ser aproveitado por todos e não por alguns.";
+        } else if (five_value == "neutral") {
+            five_text = "A utilização de termos os quais o jogador não está acostumado não é proibido, desde que suas definições sejam apresentadas ao jogador ou estejam em algum lugar de fácil acesso pelo mesmo.";
+        } else if (five_value == "agree") {
+            five_text = "Utilizar um vocabulário com o qual o jogador está acostumado, ou conhece, é o recomendado. Entretanto, caso existam termos que os jogadores não estão acostumados, é recomendado incluir suas definições em algum lugar de fácil acesso ao jogador.";
+        } else {
+            five_text = "Utilizar um vocabulário com o qual o jogador está acostumado, ou conhece, é o recomendado. Neste caso, não existem alterações nesse âmbito a serem realizadas.";
+        }
+        return five_text;
+    }    
 
 
     getHeuristicValues();
