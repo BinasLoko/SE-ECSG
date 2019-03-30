@@ -15,8 +15,8 @@
 <div class="wrap">
         <h2 class="likert-header">Formulário para avaliação de serious game</h2>
         <form method="POST" action="/heuristicform">
-          <!-- <label class="statement">Ao perceber que o jogador não está conseguindo progredir, o jogo adapta a dificuldade dos desafios às habilidades do praticante (adaptatividade).</label>
-          <ul class='likert'>
+          <label class="statement">Ao perceber que o jogador não está conseguindo progredir, o jogo adapta a dificuldade dos desafios às habilidades do praticante (adaptatividade).</label>
+          <ul class='likert heuristic-one'>
             <li>
               <input type="radio" name="likert-one" value="strong_disagree" required>
               <label>Discordo plenamente</label>
@@ -38,7 +38,53 @@
               <label>Concordo plenamente</label>
             </li>
           </ul>
-          <label class="statement">As tarefas designadas ao jogador, dentro do jogo, são de alta complexidade.</label>
+          <label class="statement">O jogo apresenta tarefas repetitivas, acarretando em tédio.</label>
+          <ul class='likert heuristic-three'>
+            <li>
+              <input type="radio" name="likert-three" value="strong_disagree" required>
+              <label>Discordo plenamente</label>
+            </li>
+            <li>
+              <input type="radio" name="likert-three" value="disagree">
+              <label>Discordo</label>
+            </li>
+            <li>
+              <input type="radio" name="likert-three" value="neutral">
+              <label>Não concordo nem discordo</label>
+            </li>
+            <li>
+              <input type="radio" name="likert-three" value="agree">
+              <label>Concordo</label>
+            </li>
+            <li>
+              <input type="radio" name="likert-three" value="strong_agree">
+              <label>Concordo plenamente</label>
+            </li>
+          </ul>
+          <label class="statement">Os termos apresentados condizem com o vocabulário do jogador.</label>
+          <ul class='likert heuristic-five'>
+            <li>
+              <input type="radio" name="likert-five" value="strong_disagree" required>
+              <label>Discordo plenamente</label>
+            </li>
+            <li>
+              <input type="radio" name="likert-five" value="disagree">
+              <label>Discordo</label>
+            </li>
+            <li>
+              <input type="radio" name="likert-five" value="neutral">
+              <label>Não concordo nem discordo</label>
+            </li>
+            <li>
+              <input type="radio" name="likert-five" value="agree">
+              <label>Concordo</label>
+            </li>
+            <li>
+              <input type="radio" name="likert-five" value="strong_agree">
+              <label>Concordo plenamente</label>
+            </li>
+          </ul>
+          <!-- <label class="statement">As tarefas designadas ao jogador, dentro do jogo, são de alta complexidade.</label>
           <ul class='likert'>
             <li>
               <input type="radio" name="likert-two" value="strong_disagree" required>
@@ -58,29 +104,6 @@
             </li>
             <li>
               <input type="radio" name="likert-two" value="strong_agree">
-              <label>Concordo plenamente</label>
-            </li>
-          </ul>
-          <label class="statement">O jogo apresenta tarefas repetitivas, acarretando em tédio.</label>
-          <ul class='likert'>
-            <li>
-              <input type="radio" name="likert-three" value="strong_disagree" required>
-              <label>Discordo plenamente</label>
-            </li>
-            <li>
-              <input type="radio" name="likert-three" value="disagree">
-              <label>Discordo</label>
-            </li>
-            <li>
-              <input type="radio" name="likert-three" value="neutral">
-              <label>Não concordo nem discordo</label>
-            </li>
-            <li>
-              <input type="radio" name="likert-three" value="agree">
-              <label>Concordo</label>
-            </li>
-            <li>
-              <input type="radio" name="likert-three" value="strong_agree">
               <label>Concordo plenamente</label>
             </li>
           </ul>
@@ -104,29 +127,6 @@
             </li>
             <li>
               <input type="radio" name="likert-four" value="strong_agree">
-              <label>Concordo plenamente</label>
-            </li>
-          </ul>
-          <label class="statement">Os termos apresentados condizem com o vocabulário do jogador.</label>
-          <ul class='likert'>
-            <li>
-              <input type="radio" name="likert-five" value="strong_disagree" required>
-              <label>Discordo plenamente</label>
-            </li>
-            <li>
-              <input type="radio" name="likert-five" value="disagree">
-              <label>Discordo</label>
-            </li>
-            <li>
-              <input type="radio" name="likert-five" value="neutral">
-              <label>Não concordo nem discordo</label>
-            </li>
-            <li>
-              <input type="radio" name="likert-five" value="agree">
-              <label>Concordo</label>
-            </li>
-            <li>
-              <input type="radio" name="likert-five" value="strong_agree">
               <label>Concordo plenamente</label>
             </li>
           </ul>
@@ -451,8 +451,8 @@
               <input type="radio" name="likert-eighteen" value="strong_agree">
               <label>Concordo plenamente</label>
             </li>
-          </ul>  -->
-          <label class="statement">O sistema apresenta feedback imediato para as ações do usuário (reconhecimento por rastreamento) sem requerer tempo adicional (evitando a expectativa e insatisfação do usuário).</label>
+          </ul> -->
+          <!-- <label class="statement">O sistema apresenta feedback imediato para as ações do usuário (reconhecimento por rastreamento) sem requerer tempo adicional (evitando a expectativa e insatisfação do usuário).</label>
           <ul class='likert'>
             <li>
               <input type="radio" name="likert-nineteen" value="strong_disagree" required>
@@ -474,7 +474,7 @@
               <input type="radio" name="likert-nineteen" value="strong_agree">
               <label>Concordo plenamente</label>
             </li>
-          </ul>
+          </ul> -->
 
           <div class="buttons">
                 <button type="reset" class="btn-reset">Resetar preenchimentos</button>
