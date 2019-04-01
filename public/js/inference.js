@@ -35,7 +35,7 @@ $(document).ready(function () {
     function setHeuristicOneValue(one_value) {
         let one_text;
         if (one_value == "strong_disagree") {
-            one_text = "Adaptatividade pode ser usada para melhorar a forma com a qual o jogador aprende e sua não utilização tende a prejudicar a experiência de quem está interagindo com a ferramenta, prejudicando o objetivo de um serious game que é a aprendizagem. Considerando que esse aspecto nunca é utilizado, é aconselhável buscar e implantar maneiras de como monitorar as habilidades habilidades julgadas necessárias do jogador para caracterizá-lo, de forma a fornecer algum tipo de ajuda.";
+            one_text = "Adaptatividade pode ser usada para melhorar a forma com a qual o jogador aprende e sua não utilização tende a prejudicar a experiência de quem está interagindo com a ferramenta, prejudicando o objetivo de um serious game que é a aprendizagem. Considerando que esse aspecto nunca é utilizado, é aconselhável buscar e implantar maneiras de como monitorar as habilidades julgadas necessárias do jogador para caracterizá-lo, de forma a fornecer algum tipo de ajuda.";
         } else if (one_value == "disagree") {
             one_text = "Adaptatividade pode ser usada para melhorar a forma com a qual o jogador aprende e sua não utilização tende a prejudicar a experiência de quem está interagindo com a ferramenta, fazendo com que a proposta escape do objetivo de um serious game que é a aprendizagem. Considerando que esse aspecto raramente é abordado, é aconselhável aumentar a quantidade de habilidades monitoradas do jogador para caracterizá-lo e poder mapear mais alguns cenários onde cabe fornecer ajuda. ";
         } else if (one_value == "neutral") {
