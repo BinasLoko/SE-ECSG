@@ -1,0 +1,11 @@
+atribuir peso as respostas
+conclusao referente ao processo que eu tive
+questao de perguntas invertidas a fim de provocar quem ta respondendo
+validar o questionario com especialista em jogos e em engenharia cognitiva
+abordar questoes estatisticas
+dividir em grupos as perguntas
+
+
+aplicar o formulario para os jogadores e enviar o relatório para o desenvolvedor
+aplicar exemplos no relatório, ficar melhor apresentável para o desenvolvedor
+questão qualitativa nas respostas
