@@ -113,6 +113,9 @@ router.post('/register', (req, res) => {
 router.get('/login', (req, res) =>
     res.render('../views/login.ejs'));
 
+router.get('/devreport', (req, res) =>
+    res.render('../views/devreport.ejs'));
+
 module.exports = router;
 
 router.get('/list', async (req, res) => {
