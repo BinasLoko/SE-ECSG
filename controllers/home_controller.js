@@ -55,8 +55,8 @@ router.get('/gamepanel', (req, res) =>
     res.render('../views/gamepanel.ejs'));
 
 router.post('/heuristicform', (req, res) => {
-    /* const body_values = req.body;
-     console.log(body_values)*/
+     const body_values = req.body;
+     console.log(body_values);
 
     // por hora, a parte do banco ficará mockada.
     res.redirect('/formsuccess');
