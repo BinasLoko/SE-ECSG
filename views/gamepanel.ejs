@@ -24,10 +24,13 @@
                 <div class="col-2">Avaliação Heurística</div>
                 <div class="col-2">Ação</div>
             </div>
-            <% for (let i = 0; i < 10; i ++) { %>
+            <% for (let i = 0; i < games.length; i ++) { %>
+            <%  const game = games[i]; %>
             <div class="row">
-                <div class="col-4">Jogo do caraio <%= i %></div>
-                <div class="col-2"><%= i % 2 == 0 ? "Preenchimento Pendente" : "Preenchido" %></div>
+                <div class="col-4"><%= game.name %></div>
+                <div class="col-2">
+                    <%= game.avaliation === 0 ? 'Tipo Zero' : (game.avaliation == 1 ? 'Tipo 1' : 'Tipo 2')%>
+                </div>
                 <div class="col-2">
                     <button class="button small" type="button">Ver Resultados</button>
                     <a class="button small gray" href="#">Fazer outra coisa</a>

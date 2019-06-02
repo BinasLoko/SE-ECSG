@@ -51,8 +51,25 @@ router.get('/about', (req, res) =>
 router.get('/register', (req, res) =>
     res.render('../views/register.ejs'));
 
-router.get('/gamepanel', (req, res) =>
-    res.render('../views/gamepanel.ejs'));
+router.get('/gamepanel', (req, res) => {
+    const games = [{
+        name: "Jogo 1",
+        avaliation: 0
+    },{
+        name: "Jogo MAster",
+        avaliation: 1
+    },{
+        name: "Jogo Blaster",
+        avaliation: 0
+    },{
+        name: "Domino",
+        avaliation: 2
+    },{
+        name: "Rodrigo santoro",
+        avaliation: 0
+    }];
+    res.render('../views/gamepanel.ejs', { games });
+});
 
 router.post('/heuristicform', (req, res) => {
      const body_values = req.body;
