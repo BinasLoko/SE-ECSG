@@ -6,6 +6,10 @@ abordar questoes estatisticas
 dividir em grupos as perguntas
 
 
-aplicar o formulario para os jogadores e enviar o relatório para o desenvolvedor
-aplicar exemplos no relatório, ficar melhor apresentável para o desenvolvedor
-questão qualitativa nas respostas
+aplicar o formulario para os jogadores e enviar o relatï¿½rio para o desenvolvedor
+aplicar exemplos no relatï¿½rio, ficar melhor apresentï¿½vel para o desenvolvedor
+questï¿½o qualitativa nas respostas
+
+
+$('.likert [value=2]').attr('checked', true);
+
