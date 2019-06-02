@@ -15,7 +15,7 @@
     <h2>Painel para gerenciamento dos serious games cadastrados</h2>
     <form method="GET" action="/gamepanel">
         <div class="buttons">
-            <a href="/gameform" class="insert_game">Cadastrar serious game</a>
+            <a href="/gameform" class="button bold">Cadastrar serious game</a>
         </div>
 
         <div class="table">
@@ -29,25 +29,12 @@
                 <div class="col-4">Jogo do caraio <%= i %></div>
                 <div class="col-2"><%= i % 2 == 0 ? "Preenchimento Pendente" : "Preenchido" %></div>
                 <div class="col-2">
-                    <button>Ver Resultados</button>
-                    <button>Fazer outra coisa</button>
+                    <button class="button small" type="button">Ver Resultados</button>
+                    <a class="button small gray" href="#">Fazer outra coisa</a>
                 </div>
             </div>
             <% } %>
         </div>
-
-        <table>
-            <tr>
-                <th>Serious game</th>
-                <th>Avaliação heurística</th>
-                <th>Ação</th>
-            </tr>
-            <tr class="sg_block">
-                <td name="sg_name"></td>
-                <td name="sg_heuristic"></td>
-                <td name="sg_action"></td>
-            </tr>
-        </table>
     </form>
 </body>
 
