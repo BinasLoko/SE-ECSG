@@ -33,7 +33,7 @@ $(document).ready(function () {
             let heuristic_result = localStorage.getItem('heuristic_values');
         });
 
-
+        
     }    
 
 

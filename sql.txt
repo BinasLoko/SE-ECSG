@@ -10,3 +10,64 @@ nome_usuario varchar(10) not null,
 senha_usuario varchar(10) not null,
 email_usuario varchar(40) not null
 );
+
+create table pessoas (
+cod_pessoa int auto_increment primary key,
+nome varchar(20) not null,
+sobrenome varchar(30) not null,
+pais_residencia varchar(20) not null,
+sexo varchar(40),
+telefone varchar(15),
+data_nascimento date not null,
+nome_usuario varchar(10) not null,
+senha_usuario varchar(10) not null,
+email_usuario varchar(40) not null
+);
+
+select * from pessoas;
+
+create table serious_game (
+cod_sg int auto_increment primary key,
+nome_sg varchar(50) not null,
+genero_sg varchar(30) not null,
+foco_sg varchar(20) not null,
+dt_lancamento_sg date not null,
+plataforma_sg varchar(15),
+heuristic_status character,
+action character,
+descricao_sg date not null
+);
+
+select * from serious_game;
+
+create table heuristic_values (
+cod_heuristic int auto_increment primary key,
+cod_sg int,
+heuristic_one_value varchar(15) not null,
+heuristic_two_value varchar(15) not null,
+heuristic_three_value varchar(15) not null,
+heuristic_four_value varchar(15) not null,
+heuristic_five_value varchar(15) not null,
+heuristic_six_value varchar(15) not null,
+heuristic_seven_value varchar(15) not null,
+heuristic_eight_value varchar(15) not null,
+heuristic_nine_value varchar(15) not null,
+heuristic_ten_value varchar(15) not null,
+heuristic_eleven_value varchar(15) not null,
+heuristic_twelve_value varchar(15) not null,
+heuristic_thirteen_value varchar(15) not null,
+heuristic_fourteen_value varchar(15) not null,
+heuristic_fifteen_value varchar(15) not null,
+heuristic_sixteen_value varchar(15) not null,
+heuristic_seventeen_value varchar(15) not null
+);
+
+ALTER TABLE `heuristic_values` ADD CONSTRAINT `fk_sg` FOREIGN KEY ( `cod_sg` ) REFERENCES `serious_game` ( `cod_sg` ) ;
+ 
+
+select * from heuristic_values
+
+
+
+
+
