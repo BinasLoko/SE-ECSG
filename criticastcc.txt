@@ -1,0 +1,15 @@
+atribuir peso as respostas
+conclusao referente ao processo que eu tive
+questao de perguntas invertidas a fim de provocar quem ta respondendo
+validar o questionario com especialista em jogos e em engenharia cognitiva
+abordar questoes estatisticas
+dividir em grupos as perguntas
+
+
+aplicar o formulario para os jogadores e enviar o relat�rio para o desenvolvedor
+aplicar exemplos no relat�rio, ficar melhor apresent�vel para o desenvolvedor
+quest�o qualitativa nas respostas
+
+
+$('.likert [value=2]').attr('checked', true);
+
