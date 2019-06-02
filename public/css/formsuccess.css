@@ -1,10 +1,21 @@
 h2 {
     text-align: center;
-    margin-bottom: 90px;
-    margin-top: 32px;
-  }
+    margin-bottom: 72px;
+    margin-top: 64px;
+    opacity: 0;
+    transform: translateY(-128px);
+}
 
-  p{
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+p{
     font-size: 16px;
     margin-bottom: 1.5em;
     line-height: 1.4em;
@@ -15,7 +26,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    margin-top: 64px;
 }
 
 .menu-navegacao ul{
@@ -43,4 +54,13 @@ h2 {
     padding: 3px; 
     display: inline;
     cursor: pointer;
-  }
+}
+
+.come-down {
+  animation: down 1s forwards;
+}
+
+@keyframes down {
+  from { opacity: 0;     transform: translateY(-128px);}
+  to { opacity: 1;     transform: translateY(0);}
+}
