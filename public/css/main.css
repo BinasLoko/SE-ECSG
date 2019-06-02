@@ -46,6 +46,7 @@ body {
   display: flex;
   text-align: center;
   cursor: pointer;
+  align-items: center;
   transition: 0.1s;
 }
 .table > .row:not(.header):nth-child(even) {
@@ -104,3 +105,15 @@ body {
 
 .button.gray { background-color: #818181; }
 .button.gray:hover { background-color: #4e4d4d; }
+
+.title {
+  width: fit-content;
+  padding-right: 32px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  text-align: left;
+  border-bottom: 2px solid #e2e2e2;
+  padding-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
