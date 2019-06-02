@@ -1,0 +1,12 @@
+create table pessoas (
+cod_pessoa int auto_increment primary key,
+nome varchar(20) not null,
+sobrenome varchar(30) not null,
+pais_residencia varchar(20) not null,
+sexo varchar(40),
+telefone varchar(15),
+data_nascimento date not null,
+nome_usuario varchar(10) not null,
+senha_usuario varchar(10) not null,
+email_usuario varchar(40) not null
+);
