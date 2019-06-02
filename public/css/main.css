@@ -85,11 +85,11 @@ body {
   color: white;
   box-shadow: 0px 1px 4px 0px #00000052;
   transition: 0.4s;
-  background-color: #61aad4;
+  background-color: #4992bd;
   text-decoration: none; 
 }
 
-.button:hover { background-color: #4d94bd; }
+.button:hover { background-color: #265d7e; }
 
 .button.bold {
   font-weight: 600;
@@ -105,6 +105,9 @@ body {
 
 .button.gray { background-color: #818181; }
 .button.gray:hover { background-color: #4e4d4d; }
+
+.button.green { background-color: #00802b; }
+.button.green:hover { background-color: #00531c; }
 
 .title {
   width: fit-content;
