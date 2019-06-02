@@ -2,26 +2,7 @@ h2 {
     text-align: center;
     margin-bottom: 90px;
     margin-top: 32px;
-  }
-
-table{
-    width: 100%;
-    margin-top: 5%;
-    border-collapse: collapse;
 }
-
-table, th, td {
-    border: 1px solid black;
-  }
-  th{
-      width: 350px;
-  }
-
-  th, td{
-      height: 40px;
-      text-align: center;
-  }
-
 
 .insert_game{
     cursor: pointer;
@@ -38,13 +19,17 @@ table, th, td {
     transition: 0.4s;
     background-color: #67bff4;
     text-decoration:none; 
- }
+}
 
- .insert_game:hover{
+.insert_game:hover{
     background-color: #509bc5;
- }
+}
 
- .buttons{
-     position: relative;
-     top: 35px;
- }
+.buttons{
+    position: relative;
+    top: 35px;
+}
+
+.table {
+    margin-top: 64px;
+}

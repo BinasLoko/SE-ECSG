@@ -36,4 +36,39 @@ body {
     }
 }
   
-  
+.table {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.table > .row {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.1s;gi
+}
+.table > .row:not(.header):nth-child(even) {
+  background: #f0f0f0;
+}
+
+.table > .row:not(.header):hover {
+  background: #cccccc;
+}
+
+.table > .row > div {
+  text-align: left;
+  padding: 12px 8px;
+  flex: 1;
+}
+
+.table > .row > div.col-2 { flex: 2; }
+.table > .row > div.col-3 { flex: 3; }
+.table > .row > div.col-4 { flex: 4; }
+.table > .row > div.col-5 { flex: 5; }
+.table > .row > div.col-6 { flex: 6; }
+
+.table > .row.header {
+  font-weight: bold;  
+  border-bottom: 2px solid #6b6b6b;
+}
