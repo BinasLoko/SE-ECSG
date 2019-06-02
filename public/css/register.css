@@ -10,23 +10,6 @@ form {
     margin-top: 48px;
 }
 
-label {
-    font-size: 15px;
-    font-weight: bold;
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 5px;
-}
-
-input {
-    border-radius: 6px;
-    outline: none;
-    border: 1px solid #e2e2e2;
-    padding: 6px 24px;
-    margin-bottom: 11px;
-    margin-left: 24px;
-}
-
 .buttons {
     display: flex;
     justify-content: center;
@@ -46,21 +29,6 @@ input {
     opacity: 1;
 }
 
-.teste {
-    display: block;
-    width: 100%;
-    height: 40px;
-    font-size: 15px;
-    color: #555;
-    background-color: #fff;
-    border: 3px solid #ccc;
-    border-radius: 4px;
-    margin-left: 0;
-    padding-left: 0;
-    border: 1px solid #ccc;
-    padding: 0 8px;
-}
-
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -68,17 +36,4 @@ input {
 
 .grid-template-rows {
     grid-template-rows: 50px 100px 50px 100px;
-}
-
-.form-align {
-    position: relative;
-    min-height: 1px;
-    padding-right: 16px;
-    float: left;
-    width: 100%;
-
-}
-
-.form-align:nth-child(even) {
-    padding-left: 16px;
 }

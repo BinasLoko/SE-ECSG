@@ -16,20 +16,20 @@
 
 <body>
     <div class="title">Formulário de cadastro do SE-ECSG</div>
-    <form method="POST" action="/register">
+    <form method="POST" action="/register" class="form">
         <section class="grid grid-template-rows">
             <div class="nome form-align">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" placeholder="Digite seu nome" id="nome" maxlength="20" required="required" class="teste">
+                <input type="text" name="nome" placeholder="Digite seu nome" id="nome" maxlength="20" required="required" class="form-control">
             </div>
             <div class="sobrenome form-align">
                 <label for="sobrenome">Sobrenome:</label>
-                <input type="text" name="sobrenome" id="sobrenome" placeholder="Digite seu sobrenome" maxlength="30" required="required" class="teste">
+                <input type="text" name="sobrenome" id="sobrenome" placeholder="Digite seu sobrenome" maxlength="30" required="required" class="form-control">
             </div>
 
             <div class="form-align form-top">
                 <label for="residencia">País onde reside:</label>
-                <select class="pais teste" name="pais">
+                <select class="pais form-control" name="pais">
                     <option value="África do Sul">África do Sul</option>
                     <option value="Albânia">Albânia</option>
                     <option value="Alemanha">Alemanha</option>
@@ -210,7 +210,7 @@
 
             <div class="form-align form-top">
                 <label for="sexo">Sexo:</label>
-                <select class="sexo teste" name="sexo">
+                <select class="sexo form-control" name="sexo">
                     <option value="nenhum" selected>Selecione se desejar</option>
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
@@ -220,31 +220,31 @@
 
             <div class="form-align">
                 <label for="telefone">Telefone:</label>
-                <input type="number" name="telefone" placeholder="Seu número para contato" id="telefone" maxlength="15" class="teste" />
+                <input type="number" name="telefone" placeholder="Seu número para contato" id="telefone" maxlength="15" class="form-control" />
             </div>
 
             <div class="form-align">
                 <label for="nascimento">Data de nascimento:</label>
-                <input type="date" name="nascimento" id="nascimento" required="required" class="teste" />
+                <input type="date" name="nascimento" id="nascimento" required="required" class="form-control" />
             </div>
             <div class="form-align form-top">
                 <label for="username">Nome de usuário:</label>
-                <input type="text" name="username" id="username" placeholder="Credencial de acesso" maxlength="10" required="required" class="teste" />
+                <input type="text" name="username" id="username" placeholder="Credencial de acesso" maxlength="10" required="required" class="form-control" />
             </div>
 
             <div class="form-align form-top">
                 <label for="email">E-mail:</label>
-                <input type="email" name="email" id="email" maxlength="40" placeholder="E-mail para contato" required="required" class="teste" />
+                <input type="email" name="email" id="email" maxlength="40" placeholder="E-mail para contato" required="required" class="form-control" />
             </div>
 
             <div class="form-align">
                 <label for="password">Senha:</label>
-                <input type="password" name="password" id="password"placeholder="Senha para acesso ao sistema" maxlength="10" required="required" class="teste" />
+                <input type="password" name="password" id="password"placeholder="Senha para acesso ao sistema" maxlength="10" required="required" class="form-control" />
             </div>
 
             <div class="form-align">
                 <label for="confirmPassword">Confirme sua senha:</label>
-                <input type="password" id="confirmPassword" placeholder="Preencher com o mesmo valor do campo senha" required="required" class="teste" />
+                <input type="password" id="confirmPassword" placeholder="Preencher com o mesmo valor do campo senha" required="required" class="form-control" />
             </div>
         </section>
         <div class="buttons">

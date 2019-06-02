@@ -4,7 +4,12 @@ h2 {
     margin-top: 32px;
 }
 
-
 .table {
-    margin-top: 32px;
+    margin-top: 64px;
+}
+
+.buttons {
+    position: absolute;
+    right: 0;
+    top: -36px;
 }
