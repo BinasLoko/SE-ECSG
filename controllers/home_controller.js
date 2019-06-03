@@ -152,16 +152,18 @@ router.post('/login', (req, res) => {
             AND senha_usuario = ?`;
 
     let form_values = [username, password];
-
-    if (username && password) {
+    
         execSQLQuery(query, form_values)
             .then(dbResponse => {
-                res.redirect('/gamepanel');
+                if(dbResponse != ""){
+                    res.redirect('/gamepanel');
+                }else{ }
+                
             })
             .catch(error => {
                 res.json('fuck');
             });
-    }
+    
 
     form_values.password = undefined;
 
