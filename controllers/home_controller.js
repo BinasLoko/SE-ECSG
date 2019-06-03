@@ -170,3 +170,31 @@ router.post('/login', (req, res) => {
 
 
 });
+
+router.post('/gameform', (req, res) => {
+    const game = req.body;
+
+    let query = `INSERT INTO serious_game 
+        (   
+            nome_sg, 
+            genero_sg, 
+            foco_sg, 
+            dt_lancamento_sg,
+            plataforma_sg, 
+            descricao_sg
+        ) 
+        VALUES
+        (
+            ?,?,?,?,?,?
+        )`;
+
+    let form_values = [
+        body_values.nome,
+        body_values.genero,
+        body_values.foco,
+        body_values.plataforma,
+        body_values.lancamento,
+        body_values.descricao
+    ]
+
+});
