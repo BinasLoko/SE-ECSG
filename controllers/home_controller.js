@@ -197,4 +197,13 @@ router.post('/gameform', (req, res) => {
         body_values.descricao
     ]
 
+    execSQLQuery(query, form_values)
+        .then(dbResponse => {
+            res.redirect('/gamepanel');
+        })
+        .catch(error => {
+            res.json('fuck');
+        });
+
+
 });
