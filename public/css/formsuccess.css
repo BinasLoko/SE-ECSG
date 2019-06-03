@@ -24,7 +24,7 @@ p{
 
 .menu-navegacao{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin-top: 64px;
 }
@@ -63,4 +63,9 @@ p{
 @keyframes down {
   from { opacity: 0;     transform: translateY(-128px);}
   to { opacity: 1;     transform: translateY(0);}
+}
+
+.button {
+    max-width: 320px;
+    width: 30%;
 }
