@@ -6,28 +6,29 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login SE-ECSG</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/login.css">
     <script src="/js/main.js"></script>
 </head>
 
 <body>
+
+    <div class="title">Entrando no SE-ECSG</div>
     <form action="login" method="POST">
-        <div>
-            <label for="nome">Usuário:</label>
-            <input type="text" name="username" id="nome" />
+
+        <div id="form">
+            <input type="text" name="username" id="nome" placeholder="Usuário"/>
+
+            <input type="password" name="password" id="password" placeholder="Senha">
+
         </div>
 
-        <div>
-            <label for="password">Senha:</label>
-            <input type="password" name="password" id="password">
+        <div class="menu-navegacao">
+            <a class="menu-options button green" type="submit">Login</a>
+            <a class="menu-options button gray" type="reset">Resetar</a>
         </div>
 
-        <div class="button">
-            <button type="submit">Login</button>
-        </div>
 
-        <div class="button">
-            <button type="reset">Resetar</button>
-        </div>
     </form>
 </body>
 

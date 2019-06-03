@@ -1,0 +1,45 @@
+.title {
+    margin-bottom: 42px !important;
+}
+
+.menu-navegacao{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 42px;
+}
+
+.button {
+    max-width: 320px;
+    width: 30%;
+    padding: 8px 24px;
+}
+
+#form{
+    border:5px solid white;
+    border-radius:5%;
+    background:transparent;
+    width:300px;
+    text-align:center;
+    margin:100px auto;
+  }
+
+  #form h1{
+    color:white;
+  }
+  
+  #form input{
+    padding:1em;
+    margin:5px;
+    border:2px solid black;
+    border-radius:3%;
+  }
+  #form .text{
+    width:250px;
+    height:2px;
+  }
+
+  ::placeholder {
+    opacity: 1;
+    font-weight: bold;
+}
