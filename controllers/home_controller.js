@@ -156,7 +156,7 @@ router.post('/login', (req, res) => {
     if (username && password) {
         execSQLQuery(query, form_values)
             .then(dbResponse => {
-                res.redirect('/home');
+                res.redirect('/gamepanel');
             })
             .catch(error => {
                 res.json('fuck');

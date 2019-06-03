@@ -14,7 +14,7 @@ $(document).ready(function () {
         let email_value;
 
 
-        $('.finalizar').on('click', function () {
+        $('.btn-final').on('click', function () {
 
             name_value = $('#nome').val();
             last_name = $('#sobrenome').val();
@@ -27,16 +27,25 @@ $(document).ready(function () {
             confirm_password = $('#confirmPassword').val();
             email_value = $('#email').val();
             //sexo e telefone podem ser vazios
+            
 
             if (user_password != confirm_password) {
                 $('#password').val("");
                 $('#confirmPassword').val("");
 
-                $("#password").attr('style', 'background-color:#FEC2C2');
-                $("#confirmPassword").attr('style', 'background-color:#FEC2C2');
+                $("#password").attr('style', 'background-color:#D3D3D3');
+                $("#confirmPassword").attr('style', 'background-color:#D3D3D3');
 
                 alert('Inconsistência nas senhas!');
             }
+            
+            if(telephone_value.length > 15){
+                $('#telefone').val("");
+                $("#telefone").attr('style', 'background-color:#D3D3D3');
+                alert('Digite até 15 caracteres no campo telefone!');
+            }
+
+
         });
     }
     getRegisterInputs();
