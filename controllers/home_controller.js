@@ -156,6 +156,7 @@ router.post('/login', (req, res) => {
         execSQLQuery(query, form_values)
             .then(dbResponse => {
                 if(dbResponse != ""){
+                    console.log(dbResponse[0].cod_pessoa);
                     res.redirect('/gamepanel');
                 }else{ }
                 

@@ -11,8 +11,6 @@ senha_usuario varchar(10) not null,
 email_usuario varchar(40) not null
 );
 
-select * from pessoas;
-
 create table serious_game (
 cod_sg int auto_increment primary key,
 nome_sg varchar(50) not null,
@@ -24,8 +22,6 @@ heuristic_status character,
 action character,
 descricao_sg date not null
 );
-
-select * from serious_game;
 
 create table heuristic_values (
 cod_heuristic int auto_increment primary key,
@@ -50,15 +46,11 @@ heuristic_seventeen_value varchar(15) not null
 );
 
 ALTER TABLE `heuristic_values` ADD CONSTRAINT `fk_sg` FOREIGN KEY ( `cod_sg` ) REFERENCES `serious_game` ( `cod_sg` ) ;
- 
-
-select * from serious_game;
-
-
-SELECT * FROM pessoas WHERE nome_usuario = '123' AND senha_usuario = '123';
 
 ALTER TABLE  `serious_game` MODIFY COLUMN `descricao_sg` varchar(50);
 
 ALTER TABLE pessoas ADD cod_sg int;
+ALTER TABLE serious_game ADD cod_pessoa int;
 ALTER TABLE `pessoas` ADD CONSTRAINT `cod_sg` FOREIGN KEY ( `cod_sg` ) REFERENCES `serious_game` ( `cod_sg` ) ;
+ALTER TABLE `serious_game` ADD CONSTRAINT `cod_pessoa` FOREIGN KEY ( `cod_pessoa` ) REFERENCES `pessoas` ( `cod_pessoa` ) ;
 

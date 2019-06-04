@@ -47,7 +47,9 @@ h2{
 <div id='dashboard'>
 </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<form method="GET" action="/devreport">
 <script>
+    
 function dashboard(id, fData){
     var barColor = 'steelblue';
     function segColor(c){ return {tarefas:"#807dba", premiações:"#e08214",jogabilidade:"#41ab5d"}[c]; }
@@ -257,3 +259,4 @@ var freqData=[
 
 dashboard('#dashboard',freqData);
 </script>
+</form>
