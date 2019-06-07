@@ -1,0 +1,64 @@
+create table pessoas (
+
+cod_pessoa int auto_increment primary key,
+
+cod_sg int,
+nome varchar(20) not null,
+
+sobrenome varchar(30) not null,
+
+pais_residencia varchar(20) not null,
+
+sexo varchar(40),
+
+telefone varchar(15),
+
+data_nascimento date not null,
+
+nome_usuario varchar(10) not null,
+
+senha_usuario varchar(10) not null,
+
+email_usuario varchar(40) not null
+);
+
+create table serious_game (
+
+cod_sg int auto_increment primary key,
+
+cod_pessoa int,
+nome_sg varchar(50) not null,
+
+genero_sg varchar(30) not null,
+
+foco_sg varchar(20) not null,
+
+dt_lancamento_sg date not null,
+
+plataforma_sg varchar(15),
+
+heuristic_status character,
+
+action character,
+descricao_sg varchar(50) not null
+);
+
+create table formulario(
+cod_form int auto_increment primary key,
+
+cod_sg int,
+heuristic_responses JSON NOT NULL); 
+
+ALTER TABLE `pessoas`
+ADD CONSTRAINT `cod_sg` 
+FOREIGN KEY ( `cod_sg` ) 
+REFERENCES `serious_game` ( `cod_sg` );
+
+
+ALTER TABLE serious_game
+ADD CONSTRAINT cod_form 
+FOREIGN KEY ( cod_form` ) 
+REFERENCES formulario ( cod_form ) ;
+
+
+
