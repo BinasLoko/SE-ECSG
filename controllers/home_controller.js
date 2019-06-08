@@ -21,37 +21,52 @@ function execSQLQuery(sqlQry, queryValues) {
     });
 }
 
+const redirectLogin = (req, res, next) => {
+    if (!req.session.userId) {
+        res.redirect('/login')
+    } else {
+        next();
+    }
+}
+
+const redirectGamePanel = (req, res, next) => {
+    if (req.session.userId) {
+        res.redirect('/gamepanel')
+    } else {
+        next();
+    }
+}
+
 
 router.get('/', (req, res) => {
     /* 
         I'm using using "../" here because I'm accessing
         the views folder from this home_controller.js file folder.
      */
+    console.log(req.session);
+    const { userId } = req.session;
     res.render('../views/home.ejs');
 });
 
 router.get('/home', (req, res) =>
     res.render('../views/home.ejs'));
 
-router.get('/gameform', (req, res) =>
+router.get('/gameform', redirectLogin, (req, res) =>
     res.render('../views/gameform.ejs'));
 
-router.get('/heuristicform', (req, res) =>
+router.get('/heuristicform', redirectLogin, (req, res) =>
     res.render('../views/heuristicform.ejs'));
 
-router.get('/heuristicreport', (req, res) =>
-    res.render('../views/heuristicreport.ejs'));
-
-router.get('/formsuccess', (req, res) =>
+router.get('/formsuccess', redirectLogin, (req, res) =>
     res.render('../views/formsuccess.ejs'));
 
 router.get('/about', (req, res) =>
     res.render('../views/about.ejs'));
 
-router.get('/register', (req, res) =>
+router.get('/register', redirectGamePanel, (req, res) =>
     res.render('../views/register.ejs'));
 
-router.get('/gamepanel', (req, res) => {
+router.get('/gamepanel', redirectLogin, (req, res) => {
     const games = [{
         name: "Jogo 1",
         avaliation: 0
@@ -76,11 +91,13 @@ router.post('/heuristicform', (req, res) => {
 
     let json_values = JSON.stringify(body_values);
     console.log(json_values);
-    
-    let query = `INSERT INTO formulario(heuristic_responses)
-                VALUES(?)`;
 
-    execSQLQuery(query, json_values)
+    let query = `INSERT INTO formulario(cod_sg, heuristic_responses)
+                VALUES(?,?)`;
+
+    let values = []
+
+    execSQLQuery(query, values)
         .then(dbResponse => {
             res.redirect('/devreport');
         })
@@ -99,11 +116,11 @@ router.post('/heuristicform', (req, res) => {
     res.redirect('/formsuccess');
 })
 
-router.post('/register', (req, res) => {
+router.post('/register', redirectGamePanel, (req, res) => {
     const body_values = req.body;
     console.log(body_values);
 
-    let query = `INSERT INTO pessoas 
+    let insertQuery = `INSERT INTO pessoas 
         (   
             nome, 
             sobrenome, 
@@ -120,7 +137,6 @@ router.post('/register', (req, res) => {
             ?,?,?,?,?,?,?,?,?
         )`;
 
-    var teste = body_values.nome;
     let form_values = [
         body_values.nome,
         body_values.sobrenome,
@@ -133,21 +149,34 @@ router.post('/register', (req, res) => {
         body_values.email
     ]
 
-    execSQLQuery(query, form_values)
+    let selectQuery = `
+            SELECT * 
+            FROM pessoas
+            WHERE nome_usuario = ? 
+            AND email_usuario = ?`;
+
+    let form_select_values = [body_values.username, body_values.email];
+
+    execSQLQuery(selectQuery, form_select_values)
         .then(dbResponse => {
-            res.redirect('/login');
+            if (dbResponse == "") {
+                execSQLQuery(insertQuery, form_values)
+                    .then(dbResponse => {
+                        res.redirect('/login');
+                    })
+                    .catch(error => {
+                        res.redirect('/register');
+                    });
+            }
+            res.redirect('/register');
         })
         .catch(error => {
-            res.json('fuck');
+            res.redirect('/register');
         });
-
-    //todo
-    //se der erro, botar as infos no localstorage e atribuir 
-    //botar maxlength nos campos
 });
 
 
-router.get('/login', (req, res) =>
+router.get('/login', redirectGamePanel, (req, res) =>
     res.render('../views/login.ejs'));
 
 router.get('/devreport', (req, res) =>
@@ -160,7 +189,18 @@ router.get('/list', async (req, res) => {
     res.json(dbResponse);
 })
 
-router.post('/login', (req, res) => {
+router.post('/logout', redirectLogin, (req, res) => {
+    req.session.destroy(err =>{
+        if(err){
+            return res.redirect('/home');
+        }
+
+        res.clearCookie('ECSG_SESSION');
+        res.redirect('/login');
+    })
+});
+
+router.post('/login', redirectGamePanel, (req, res) => {
     const user = req.body;
     const username = req.body.username;
     const password = req.body.password;
@@ -176,13 +216,14 @@ router.post('/login', (req, res) => {
     execSQLQuery(query, form_values)
         .then(dbResponse => {
             if (dbResponse != "") {
-                console.log(dbResponse[0].cod_pessoa);
+                req.session.userId = dbResponse[0].cod_pessoa;
                 res.redirect('/gamepanel');
-            } else { }
-
+            } else {
+                res.redirect('/login');
+            }
         })
         .catch(error => {
-            res.json('fuck');
+            res.redirect('/login');
         });
 
 
@@ -202,11 +243,12 @@ router.post('/gameform', (req, res) => {
             foco_sg, 
             dt_lancamento_sg,
             plataforma_sg, 
-            descricao_sg
+            descricao_sg,
+            cod_pessoa
         ) 
         VALUES
         (
-            ?,?,?,?,?,?
+            ?,?,?,?,?,?,?
         )`;
 
     let form_values = [
@@ -215,7 +257,8 @@ router.post('/gameform', (req, res) => {
         body_values.foco,
         body_values.plataforma,
         body_values.lancamento,
-        body_values.descricao
+        body_values.descricao,
+        req.session.userId
     ]
 
     execSQLQuery(query, form_values)
