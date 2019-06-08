@@ -20,7 +20,7 @@
         <section class="grid grid-template-rows">
             <div class="nome form-align">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" placeholder="Digite o nome do serious game" id="nome" maxlength="20" required="required" class="form-control">
+                <input type="text" name="nome" placeholder="Digite o nome do serious game" id="nome" maxlength="50" required="required" class="form-control">
             </div>
             <div class="sobrenome form-align">
                 <label for="genero">Gênero:</label>
@@ -32,33 +32,14 @@
                 <select class="foco form-control" name="foco">
                     <option value="Treinamento">Treinamento sobre algum assunto</option>
                     <option value="Postura">Mudança de atitude</option>
-                    <option value="Alemanha">Disseminação de conhecimento</option>
-                    <option value="Andorra">Alertar questões naturais</option>
+                    <option value="Disseminacao">Disseminação de conhecimento</option>
+                    <option value="Alertar">Alertar questões naturais</option>
                 </select>
             </div>
-
-
             <div class="form-align form-top">
-                <label for="plataforma">Plataforma:</label>
-                <select class="plataforma form-control" name="plataforma" multiple>
-                    <option value="windows" selected>Windows</option>
-                    <option value="mac">Mac</option>
-                    <option value="linux">Linux</option>
-                    <option value="android">Android</option>
-                    <option value="ios">iOS</option>
-                </select>
-            </div>
-
-            <div class="form-align">
-                <label for="dt_lancamento">Data de lançamento:</label>
-                <input type="date" name="lancamento" id="lancamento" required="required" class="form-control" />
-            </div>
-
-            <div class="form-align">
                     <label for="descricao">Descrição:</label>
                     <textarea name="descricao" id="descricao" required="required" class="form-control" /></textarea>
-                </div>
-            
+                </div>            
         </section>
         <div class="buttons">
             <button type="reset" class="btn-reset button gray">Resetar preenchimentos</button>
