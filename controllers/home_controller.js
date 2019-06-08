@@ -64,23 +64,33 @@ router.get('/register', redirectGamePanel, (req, res) =>
     res.render('../views/register.ejs'));
 
 router.get('/gamepanel', redirectLogin, (req, res) => {
-    const games = [{
-        name: "Jogo 1",
-        avaliation: 0
-    }, {
-        name: "Jogo MAster",
-        avaliation: 1
-    }, {
-        name: "Jogo Blaster",
-        avaliation: 0
-    }, {
-        name: "Domino",
-        avaliation: 2
-    }, {
-        name: "Rodrigo santoro",
-        avaliation: 0
-    }];
-    res.render('../views/gamepanel.ejs', { games });
+
+    let selectQuery = `
+            SELECT * 
+            FROM serious_game
+            WHERE cod_pessoa = ?`;
+    let form_select_values = [req.session.userId];
+
+    execSQLQuery(selectQuery, form_select_values)
+        .then(dbResponse => {
+            if(dbResponse != ""){
+                for (let i = 0; i <= dbResponse.length; i++) {
+                    let games = [{
+                        name: dbResponse[i].nome_sg,
+                        avaliation: dbResponse[i].heuristic_status
+                    }]
+                }
+                res.render('../views/gamepanel.ejs', { games });
+            }else{
+                let games = [{}]
+                res.render('../views/gamepanel.ejs', { games });
+            }            
+            
+        })
+        .catch(error => {
+            res.redirect('/login');
+        });
+
 });
 
 router.post('/heuristicform', (req, res) => {
@@ -185,8 +195,8 @@ router.get('/list', async (req, res) => {
 })
 
 router.post('/logout', redirectLogin, (req, res) => {
-    req.session.destroy(err =>{
-        if(err){
+    req.session.destroy(err => {
+        if (err) {
             return res.redirect('/home');
         }
 
@@ -212,7 +222,7 @@ router.post('/login', redirectGamePanel, (req, res) => {
             if (dbResponse != "") {
                 req.session.userId = dbResponse[0].cod_pessoa;
                 res.redirect('/gamepanel');
-            } else {}
+            } else { }
         })
         .catch(error => {
             res.redirect('/home');
