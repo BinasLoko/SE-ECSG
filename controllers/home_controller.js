@@ -55,16 +55,16 @@ router.get('/gamepanel', (req, res) => {
     const games = [{
         name: "Jogo 1",
         avaliation: 0
-    },{
+    }, {
         name: "Jogo MAster",
         avaliation: 1
-    },{
+    }, {
         name: "Jogo Blaster",
         avaliation: 0
-    },{
+    }, {
         name: "Domino",
         avaliation: 2
-    },{
+    }, {
         name: "Rodrigo santoro",
         avaliation: 0
     }];
@@ -72,10 +72,30 @@ router.get('/gamepanel', (req, res) => {
 });
 
 router.post('/heuristicform', (req, res) => {
-     const body_values = req.body;
-     console.log(body_values);
+    const body_values = req.body;
 
-    // por hora, a parte do banco ficará mockada.
+    let json_values = JSON.stringify(body_values);
+    console.log(json_values);
+    
+    let query = `INSERT INTO formulario(heuristic_responses)
+                VALUES(?)`;
+
+    execSQLQuery(query, json_values)
+        .then(dbResponse => {
+            res.redirect('/devreport');
+        })
+        .catch(error => {
+            res.redirect('/gamepanel');
+
+            var popup = require('popups');
+
+            popup.alert({
+                content: 'Algo deu errado com o envio do formulário de heurísticas, tente novamente!'
+            });
+        });
+
+
+
     res.redirect('/formsuccess');
 })
 
@@ -152,19 +172,19 @@ router.post('/login', (req, res) => {
             AND senha_usuario = ?`;
 
     let form_values = [username, password];
-    
-        execSQLQuery(query, form_values)
-            .then(dbResponse => {
-                if(dbResponse != ""){
-                    console.log(dbResponse[0].cod_pessoa);
-                    res.redirect('/gamepanel');
-                }else{ }
-                
-            })
-            .catch(error => {
-                res.json('fuck');
-            });
-    
+
+    execSQLQuery(query, form_values)
+        .then(dbResponse => {
+            if (dbResponse != "") {
+                console.log(dbResponse[0].cod_pessoa);
+                res.redirect('/gamepanel');
+            } else { }
+
+        })
+        .catch(error => {
+            res.json('fuck');
+        });
+
 
     form_values.password = undefined;
 

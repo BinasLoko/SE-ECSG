@@ -61,13 +61,8 @@ li label{
     padding-left: 8px;
 }
 
-.buttons{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 30px;
-}
-
-button {
-    width: 240px;
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }

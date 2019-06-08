@@ -1,0 +1,1 @@
+$('.likert [value="disagree"]').attr('checked', true);
