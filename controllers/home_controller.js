@@ -22,7 +22,6 @@ function execSQLQuery(sqlQry, queryValues) {
 }
 
 const redirectLogin = (req, res, next) => {
-    console.log(req.session.userId);
     if (!req.session.userId) {
         res.redirect('/login')
     } else {
@@ -37,7 +36,6 @@ const redirectGamePanel = (req, res, next) => {
         next();
     }
 }
-
 
 router.get('/', (req, res) => {
     /* 
@@ -65,7 +63,7 @@ router.get('/about', (req, res) =>
 router.get('/register', redirectGamePanel, (req, res) =>
     res.render('../views/register.ejs'));
 
-router.get('/gamepanel', (req, res) => {
+router.get('/gamepanel', redirectLogin, (req, res) => {
     const games = [{
         name: "Jogo 1",
         avaliation: 0
@@ -213,7 +211,6 @@ router.post('/login', redirectGamePanel, (req, res) => {
         .then(dbResponse => {
             if (dbResponse != "") {
                 req.session.userId = dbResponse[0].cod_pessoa;
-                console.log(req.session.userId);
                 res.redirect('/gamepanel');
             } else {}
         })
