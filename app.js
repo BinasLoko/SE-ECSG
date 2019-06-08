@@ -1,7 +1,25 @@
 'use strict';
 /* Settings */
 const express = require('express');
+const session = require('express-session');
 const app = express();
+const COOKIE_LIFETIME = 1000 * 60 * 60 * 2; //cookie expira depois de 2h
+const SESSION_SECRET = "JONASBROTHERS";
+
+app.use(
+    session({
+        name: 'ECSG_SESSION',
+        resave: false,
+        saveUninitialized: false,
+        secret: SESSION_SECRET,
+        cookie: {
+            maxAge: COOKIE_LIFETIME,
+            sameSite: true,
+            secure: false
+        }
+
+    }))
+
 const bodyParser = require('body-parser');
 const port = 8080;
 
@@ -23,6 +41,4 @@ app.use('/', home);
 
 /* Server */
 app.listen(port, () => console.log(`Running at localhost:${port}!`));
-
-
 
