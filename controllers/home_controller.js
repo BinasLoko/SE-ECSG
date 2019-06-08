@@ -22,6 +22,7 @@ function execSQLQuery(sqlQry, queryValues) {
 }
 
 const redirectLogin = (req, res, next) => {
+    console.log(req.session.userId);
     if (!req.session.userId) {
         res.redirect('/login')
     } else {
@@ -43,8 +44,6 @@ router.get('/', (req, res) => {
         I'm using using "../" here because I'm accessing
         the views folder from this home_controller.js file folder.
      */
-    console.log(req.session);
-    const { userId } = req.session;
     res.render('../views/home.ejs');
 });
 
@@ -66,7 +65,7 @@ router.get('/about', (req, res) =>
 router.get('/register', redirectGamePanel, (req, res) =>
     res.render('../views/register.ejs'));
 
-router.get('/gamepanel', redirectLogin, (req, res) => {
+router.get('/gamepanel', (req, res) => {
     const games = [{
         name: "Jogo 1",
         avaliation: 0
@@ -90,7 +89,6 @@ router.post('/heuristicform', (req, res) => {
     const body_values = req.body;
 
     let json_values = JSON.stringify(body_values);
-    console.log(json_values);
 
     let query = `INSERT INTO formulario(cod_sg, heuristic_responses)
                 VALUES(?,?)`;
@@ -118,7 +116,6 @@ router.post('/heuristicform', (req, res) => {
 
 router.post('/register', redirectGamePanel, (req, res) => {
     const body_values = req.body;
-    console.log(body_values);
 
     let insertQuery = `INSERT INTO pessoas 
         (   
@@ -168,7 +165,7 @@ router.post('/register', redirectGamePanel, (req, res) => {
                         res.redirect('/register');
                     });
             }
-            res.redirect('/register');
+            res.redirect('/login');
         })
         .catch(error => {
             res.redirect('/register');
@@ -179,7 +176,7 @@ router.post('/register', redirectGamePanel, (req, res) => {
 router.get('/login', redirectGamePanel, (req, res) =>
     res.render('../views/login.ejs'));
 
-router.get('/devreport', (req, res) =>
+router.get('/devreport', redirectLogin, (req, res) =>
     res.render('../views/devreport.ejs'));
 
 module.exports = router;
@@ -204,7 +201,6 @@ router.post('/login', redirectGamePanel, (req, res) => {
     const user = req.body;
     const username = req.body.username;
     const password = req.body.password;
-
     let query = `
             SELECT * 
             FROM pessoas
@@ -217,13 +213,12 @@ router.post('/login', redirectGamePanel, (req, res) => {
         .then(dbResponse => {
             if (dbResponse != "") {
                 req.session.userId = dbResponse[0].cod_pessoa;
+                console.log(req.session.userId);
                 res.redirect('/gamepanel');
-            } else {
-                res.redirect('/login');
-            }
+            } else {}
         })
         .catch(error => {
-            res.redirect('/login');
+            res.redirect('/home');
         });
 
 
