@@ -156,6 +156,7 @@ router.post('/login', (req, res) => {
         execSQLQuery(query, form_values)
             .then(dbResponse => {
                 if(dbResponse != ""){
+                    console.log(dbResponse[0].cod_pessoa);
                     res.redirect('/gamepanel');
                 }else{ }
                 
@@ -167,6 +168,43 @@ router.post('/login', (req, res) => {
 
     form_values.password = undefined;
 
+
+
+});
+
+router.post('/gameform', (req, res) => {
+    const game = req.body;
+
+    let query = `INSERT INTO serious_game 
+        (   
+            nome_sg, 
+            genero_sg, 
+            foco_sg, 
+            dt_lancamento_sg,
+            plataforma_sg, 
+            descricao_sg
+        ) 
+        VALUES
+        (
+            ?,?,?,?,?,?
+        )`;
+
+    let form_values = [
+        body_values.nome,
+        body_values.genero,
+        body_values.foco,
+        body_values.plataforma,
+        body_values.lancamento,
+        body_values.descricao
+    ]
+
+    execSQLQuery(query, form_values)
+        .then(dbResponse => {
+            res.redirect('/gamepanel');
+        })
+        .catch(error => {
+            res.json('fuck');
+        });
 
 
 });

@@ -1,0 +1,55 @@
+SELECT 
+
+
+SELECT Name,Surname,
+ JSON_VALUE(jsonCol,'$.info.address.PostCode') AS PostCode,
+ JSON_VALUE(jsonCol,'$.info.address."Address Line 1"')+' '
+  +JSON_VALUE(jsonCol,'$.info.address."Address Line 2"') AS Address,
+ JSON_QUERY(jsonCol,'$.info.skills') AS Skills
+FROM People
+WHERE ISJSON(jsonCol)>0
+ AND JSON_VALUE(jsonCol,'$.info.address.Town')='Belgrade'
+ AND Status='Active'
+ORDER BY JSON_VALUE(jsonCol,'$.info.address.PostCode')
+
+
+UPDATE
+DECLARE @json NVARCHAR(MAX);
+SET @json = '{"info":{"address":[{"town":"Belgrade"},{"town":"Paris"},{"town":"Madrid"}]}}';
+SET @json = JSON_MODIFY(@json,'$.info.address[1].town','London');
+SELECT modifiedJson = @json;
+
+
+INSERT
+
+INSERT INTO `e_store`(
+    `name` ,
+    `brand_id` ,
+    `category_id` ,
+    `attributes`
+) VALUES(
+    'Prime' ,
+    '1' ,
+    '1' ,
+    '{"screen": "50 inch", "resolution": "2048 x 1152 pixels", "ports": {"hdmi": 1, "usb": 3}, "speakers": {"left": "10 watt", "right": "10 watt"}}'
+);
+
+
+
+
+CREATE
+
+CREATE TABLE `e_store`.`products`(
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+    `name` VARCHAR(250) NOT NULL ,
+    `brand_id` INT UNSIGNED NOT NULL ,
+    `category_id` INT UNSIGNED NOT NULL ,
+    `attributes` JSON NOT NULL ,
+    PRIMARY KEY(`id`) ,
+    INDEX `CATEGORY_ID`(`category_id` ASC) ,
+    INDEX `BRAND_ID`(`brand_id` ASC) ,
+    CONSTRAINT `brand_id` FOREIGN KEY(`brand_id`) REFERENCES `e_store`.`brands`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE ,
+    CONSTRAINT `category_id` FOREIGN KEY(`category_id`) REFERENCES `e_store`.`categories`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+

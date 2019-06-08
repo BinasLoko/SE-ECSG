@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="/css/main.css">
 <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/48F89368-C982-0A4A-9A31-806E7AF7DCD9/main.js" charset="UTF-8"></script><style>
 body{
     width:1060px;
@@ -42,11 +43,13 @@ h2{
 
 </style>
 <body>
-<h2 class="likert-header">Relatório gerado pelo formulário de heurísticas</h2>
+<div class="title">Relatório gerado pelo formulário de heurísticas</div>
 <div id='dashboard'>
 </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<form method="GET" action="/devreport">
 <script>
+    
 function dashboard(id, fData){
     var barColor = 'steelblue';
     function segColor(c){ return {tarefas:"#807dba", premiações:"#e08214",jogabilidade:"#41ab5d"}[c]; }
@@ -256,3 +259,4 @@ var freqData=[
 
 dashboard('#dashboard',freqData);
 </script>
+</form>
