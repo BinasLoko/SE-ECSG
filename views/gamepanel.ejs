@@ -34,7 +34,7 @@
                     <%= game.evaluation == "N" ? 'Pendente' : 'Preenchido'%>
                 </div>
                 <div class="col-2">
-                    <a href="/heuristicform" class="button small green">Preencher avaliação</a>
+                    <a href="/heuristicform?codsg=<%=game.cod_sg%>" class="button small green">Preencher avaliação</a>
                 </div>
             </div>
             <% } %>

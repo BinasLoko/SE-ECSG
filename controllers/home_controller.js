@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+const querystring = require('querystring');
 
 
 function execSQLQuery(sqlQry, queryValues) {
@@ -51,15 +52,10 @@ router.get('/home', (req, res) =>
 router.get('/gameform', redirectLogin, (req, res) =>
     res.render('../views/gameform.ejs'));
 
-router.get('/heuristicform', redirectLogin, (req, res) =>{
-    
-
-
-    
-   
+router.get('/heuristicform', redirectLogin, (req, res) => {
     res.render('../views/heuristicform.ejs');
 });
-    
+
 
 router.get('/formsuccess', redirectLogin, (req, res) =>
     res.render('../views/formsuccess.ejs'));
@@ -79,22 +75,20 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
 
     let form_values = [req.session.userId];
 
-    let games = [];    
+    let games = [];
 
     execSQLQuery(query, form_values)
         .then(dbResponse => {
             if (dbResponse != "") {
-                for(let i = 0; i < dbResponse.length; i++){
-                    console.log(dbResponse);
+                for (let i = 0; i < dbResponse.length; i++) {
                     games.push({
                         name: dbResponse[i].nome_sg,
                         evaluation: dbResponse[i].heuristic_status,
                         cod_sg: dbResponse[i].cod_sg
                     });
                 }
-                console.log(games);
                 res.render('../views/gamepanel.ejs', { games });
-            }else{
+            } else {
                 res.render('../views/gamepanel.ejs', { games });
             }
         })
@@ -119,18 +113,20 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
         name: "Rodrigo santoro",
         avaliation: 0
     }];*/
-    
+
 });
 
 router.post('/heuristicform', (req, res) => {
     const body_values = req.body;
-
     let json_values = JSON.stringify(body_values);
+
+    console.log(req.params);
+    console.log(req.params.codsg);
 
     let query = `INSERT INTO formulario(cod_sg, heuristic_responses)
                 VALUES(?,?)`;
 
-    let values = [ ,json_values];
+    let values = [, json_values];
 
     execSQLQuery(query, values)
         .then(dbResponse => {
@@ -224,8 +220,8 @@ router.get('/list', async (req, res) => {
 })
 
 router.post('/logout', redirectLogin, (req, res) => {
-    req.session.destroy(err =>{
-        if(err){
+    req.session.destroy(err => {
+        if (err) {
             return res.redirect('/home');
         }
 
@@ -251,7 +247,7 @@ router.post('/login', redirectGamePanel, (req, res) => {
             if (dbResponse != "") {
                 req.session.userId = dbResponse[0].cod_pessoa;
                 res.redirect('/gamepanel');
-            } else {}
+            } else { }
         })
         .catch(error => {
             res.redirect('/home');
@@ -266,7 +262,6 @@ router.post('/login', redirectGamePanel, (req, res) => {
 
 router.post('/gameform', (req, res) => {
     const game = req.body;
-    console.log(game);
     let heuristic_status = "N";
     let query = `INSERT INTO serious_game 
         (   
@@ -296,7 +291,6 @@ router.post('/gameform', (req, res) => {
             res.redirect('/gamepanel');
         })
         .catch(error => {
-            console.log(error);
             res.json('fuck');
         });
 
