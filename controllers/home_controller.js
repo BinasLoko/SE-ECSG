@@ -64,7 +64,41 @@ router.get('/register', redirectGamePanel, (req, res) =>
     res.render('../views/register.ejs'));
 
 router.get('/gamepanel', redirectLogin, (req, res) => {
-    const games = [{
+
+    let query = `
+            SELECT * 
+            FROM serious_game
+            WHERE cod_pessoa = ?`;
+
+    let form_values = [req.session.userId];
+
+    let games =[{
+        name: "",
+        evaluation: ""
+    }];
+
+    execSQLQuery(query, form_values)
+        .then(dbResponse => {
+            if (dbResponse != "") {
+                for(let i = 0; i < dbResponse.length; i++){
+
+                    games.name = dbResponse[i].nome_sg;
+                    games.evaluation = dbResponse[i].heuristic_status;
+
+                }
+                console.log(games.length);
+                res.render('../views/gamepanel.ejs', { games });
+            }else{
+                res.render('../views/gamepanel.ejs', { games });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            res.redirect('/home');
+        });
+
+
+    /*const games = [{
         name: "Jogo 1",
         avaliation: 0
     }, {
@@ -79,8 +113,8 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
     }, {
         name: "Rodrigo santoro",
         avaliation: 0
-    }];
-    res.render('../views/gamepanel.ejs', { games });
+    }];*/
+    
 });
 
 router.post('/heuristicform', (req, res) => {
@@ -227,20 +261,21 @@ router.post('/login', redirectGamePanel, (req, res) => {
 
 router.post('/gameform', (req, res) => {
     const game = req.body;
-
+    let heuristic_status = "N";
     let query = `INSERT INTO serious_game 
         (   
             nome_sg, 
             genero_sg, 
             foco_sg, 
             dt_lancamento_sg,
-            plataforma_sg, 
+            plataforma_sg,
+            heuristic_status, 
             descricao_sg,
             cod_pessoa
         ) 
         VALUES
         (
-            ?,?,?,?,?,?,?
+            ?,?,?,?,?,?,?,?
         )`;
 
     let form_values = [
@@ -249,6 +284,7 @@ router.post('/gameform', (req, res) => {
         body_values.foco,
         body_values.plataforma,
         body_values.lancamento,
+        heuristic_status,
         body_values.descricao,
         req.session.userId
     ]
