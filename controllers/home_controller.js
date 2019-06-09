@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+const querystring = require('querystring');
 
 
 function execSQLQuery(sqlQry, queryValues) {
@@ -51,8 +52,16 @@ router.get('/home', (req, res) =>
 router.get('/gameform', redirectLogin, (req, res) =>
     res.render('../views/gameform.ejs'));
 
-router.get('/heuristicform', redirectLogin, (req, res) =>
-    res.render('../views/heuristicform.ejs'));
+router.get('/heuristicform', redirectLogin, (req, res) => {
+
+    console.log(req.query.codsg);
+
+    req.session.cod_sg = req.query.codsg;
+
+    res.render('../views/heuristicform.ejs');
+    
+});
+
 
 router.get('/formsuccess', redirectLogin, (req, res) =>
     res.render('../views/formsuccess.ejs'));
@@ -72,26 +81,24 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
 
     let form_values = [req.session.userId];
 
-    let games;
-    
+    let games = [];
 
     execSQLQuery(query, form_values)
         .then(dbResponse => {
             if (dbResponse != "") {
-                for(let i = 0; i < dbResponse.length; i++){
-                    games =[{
+                for (let i = 0; i < dbResponse.length; i++) {
+                    games.push({
                         name: dbResponse[i].nome_sg,
-                        evaluation: dbResponse[i].heuristic_status
-                    }];
+                        evaluation: dbResponse[i].heuristic_status,
+                        cod_sg: dbResponse[i].cod_sg
+                    });
                 }
-                console.log(games);
                 res.render('../views/gamepanel.ejs', { games });
-            }else{
+            } else {
                 res.render('../views/gamepanel.ejs', { games });
             }
         })
         .catch(error => {
-            console.log(error);
             res.redirect('/home');
         });
 
@@ -112,22 +119,32 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
         name: "Rodrigo santoro",
         avaliation: 0
     }];*/
-    
+
 });
 
 router.post('/heuristicform', (req, res) => {
     const body_values = req.body;
-
     let json_values = JSON.stringify(body_values);
+    let cod_sg_value = req.session.cod_sg;
 
     let query = `INSERT INTO formulario(cod_sg, heuristic_responses)
                 VALUES(?,?)`;
 
-    let values = []
+    let values = [cod_sg_value, json_values];
+
+    let update_query = `UPDATE serious_game
+                        set heuristic_status = "S"
+                        WHERE cod_sg = ?`
+    let update_value = [cod_sg_value];
+
 
     execSQLQuery(query, values)
         .then(dbResponse => {
-            res.redirect('/devreport');
+            execSQLQuery(update_query, update_value)
+                .then(dbResponse => {
+                    req.session.cod_sg = null;
+                    res.redirect('/devreport');
+                })            
         })
         .catch(error => {
             res.redirect('/gamepanel');
@@ -138,10 +155,6 @@ router.post('/heuristicform', (req, res) => {
                 content: 'Algo deu errado com o envio do formulário de heurísticas, tente novamente!'
             });
         });
-
-
-
-    res.redirect('/formsuccess');
 })
 
 router.post('/register', redirectGamePanel, (req, res) => {
@@ -217,8 +230,8 @@ router.get('/list', async (req, res) => {
 })
 
 router.post('/logout', redirectLogin, (req, res) => {
-    req.session.destroy(err =>{
-        if(err){
+    req.session.destroy(err => {
+        if (err) {
             return res.redirect('/home');
         }
 
@@ -244,7 +257,7 @@ router.post('/login', redirectGamePanel, (req, res) => {
             if (dbResponse != "") {
                 req.session.userId = dbResponse[0].cod_pessoa;
                 res.redirect('/gamepanel');
-            } else {}
+            } else { }
         })
         .catch(error => {
             res.redirect('/home');
@@ -265,25 +278,21 @@ router.post('/gameform', (req, res) => {
             nome_sg, 
             genero_sg, 
             foco_sg, 
-            dt_lancamento_sg,
-            plataforma_sg,
             heuristic_status, 
             descricao_sg,
             cod_pessoa
         ) 
         VALUES
         (
-            ?,?,?,?,?,?,?,?
+            ?,?,?,?,?,?
         )`;
 
     let form_values = [
-        body_values.nome,
-        body_values.genero,
-        body_values.foco,
-        body_values.plataforma,
-        body_values.lancamento,
+        game.nome,
+        game.genero,
+        game.foco,
         heuristic_status,
-        body_values.descricao,
+        game.descricao,
         req.session.userId
     ]
 
