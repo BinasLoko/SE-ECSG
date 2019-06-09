@@ -51,8 +51,15 @@ router.get('/home', (req, res) =>
 router.get('/gameform', redirectLogin, (req, res) =>
     res.render('../views/gameform.ejs'));
 
-router.get('/heuristicform', redirectLogin, (req, res) =>
-    res.render('../views/heuristicform.ejs'));
+router.get('/heuristicform', redirectLogin, (req, res) =>{
+    
+
+
+    
+   
+    res.render('../views/heuristicform.ejs');
+});
+    
 
 router.get('/formsuccess', redirectLogin, (req, res) =>
     res.render('../views/formsuccess.ejs'));
@@ -81,7 +88,8 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
                 for(let i = 0; i < dbResponse.length; i++){
                     games =[{
                         name: dbResponse[i].nome_sg,
-                        evaluation: dbResponse[i].heuristic_status
+                        evaluation: dbResponse[i].heuristic_status,
+                        cod_sg: dbResponse[i].cod_sg
                     }];
                 }
                 console.log(games);
@@ -91,7 +99,6 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
             }
         })
         .catch(error => {
-            console.log(error);
             res.redirect('/home');
         });
 
@@ -123,7 +130,7 @@ router.post('/heuristicform', (req, res) => {
     let query = `INSERT INTO formulario(cod_sg, heuristic_responses)
                 VALUES(?,?)`;
 
-    let values = []
+    let values = [ ,json_values];
 
     execSQLQuery(query, values)
         .then(dbResponse => {
@@ -259,31 +266,28 @@ router.post('/login', redirectGamePanel, (req, res) => {
 
 router.post('/gameform', (req, res) => {
     const game = req.body;
+    console.log(game);
     let heuristic_status = "N";
     let query = `INSERT INTO serious_game 
         (   
             nome_sg, 
             genero_sg, 
             foco_sg, 
-            dt_lancamento_sg,
-            plataforma_sg,
             heuristic_status, 
             descricao_sg,
             cod_pessoa
         ) 
         VALUES
         (
-            ?,?,?,?,?,?,?,?
+            ?,?,?,?,?,?
         )`;
 
     let form_values = [
-        body_values.nome,
-        body_values.genero,
-        body_values.foco,
-        body_values.plataforma,
-        body_values.lancamento,
+        game.nome,
+        game.genero,
+        game.foco,
         heuristic_status,
-        body_values.descricao,
+        game.descricao,
         req.session.userId
     ]
 
@@ -292,6 +296,7 @@ router.post('/gameform', (req, res) => {
             res.redirect('/gamepanel');
         })
         .catch(error => {
+            console.log(error);
             res.json('fuck');
         });
 
