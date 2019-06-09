@@ -79,18 +79,18 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
 
     let form_values = [req.session.userId];
 
-    let games;
-    
+    let games = [];    
 
     execSQLQuery(query, form_values)
         .then(dbResponse => {
             if (dbResponse != "") {
                 for(let i = 0; i < dbResponse.length; i++){
-                    games =[{
+                    console.log(dbResponse);
+                    games.push({
                         name: dbResponse[i].nome_sg,
                         evaluation: dbResponse[i].heuristic_status,
                         cod_sg: dbResponse[i].cod_sg
-                    }];
+                    });
                 }
                 console.log(games);
                 res.render('../views/gamepanel.ejs', { games });
