@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registrando-se no ECSG</title>
     <link rel="stylesheet" href="/css/gamepanel.css">
-    <link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/main.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 
@@ -21,20 +21,21 @@
         <div class="table">
             <div class="row header">
                 <div class="col-4">Serious Game</div>
+                <div class="col-2">Avaliação Heurística</div>
                 <div class="col-2">Ação</div>
             </div>
             <% for (let i = 0; i < games.length; i ++) { %>
-                <%  const game = games[i]; %>
-                    <div class="row">
-                        <div class="col-4">
-                            <%= game.name %>
-                        </div>
-                        <div class="col-2">
-                            <button class="button small" type="button">Preencher Formulário de Heurísticas</button>
-                            <button class="button small gray" type="button">Formulário já preenchido</button>
-                        </div>
-                    </div>
-                    <% } %>
+            <%  const game = games[i]; %>
+            <div class="row">
+                <div class="col-4"><%= game.name %></div>
+                <div class="col-2 status">
+                    <%= game.evaluation == "N" ? 'Pendente' : 'Preenchido'%>
+                </div>
+                <div class="col-2">
+                    <button class="button small green" type="button">Preencher formulário de heurísticas</button>
+                </div>
+            </div>
+            <% } %>
         </div>
     </form>
 </body>
