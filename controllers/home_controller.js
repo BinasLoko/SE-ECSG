@@ -301,6 +301,8 @@ router.post('/gameform', (req, res) => {
             res.redirect('/gamepanel');
         })
         .catch(error => {
+            console.log(error);
+            console.log(req.session.userId);
             res.json('fuck');
         });
 
