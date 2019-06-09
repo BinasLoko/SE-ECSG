@@ -53,7 +53,13 @@ router.get('/gameform', redirectLogin, (req, res) =>
     res.render('../views/gameform.ejs'));
 
 router.get('/heuristicform', redirectLogin, (req, res) => {
+
+    console.log(req.query.codsg);
+
+    req.session.cod_sg = req.query.codsg;
+
     res.render('../views/heuristicform.ejs');
+    
 });
 
 
@@ -119,18 +125,26 @@ router.get('/gamepanel', redirectLogin, (req, res) => {
 router.post('/heuristicform', (req, res) => {
     const body_values = req.body;
     let json_values = JSON.stringify(body_values);
-
-    console.log(req.params);
-    console.log(req.params.codsg);
+    let cod_sg_value = req.session.cod_sg;
 
     let query = `INSERT INTO formulario(cod_sg, heuristic_responses)
                 VALUES(?,?)`;
 
-    let values = [, json_values];
+    let values = [cod_sg_value, json_values];
+
+    let update_query = `UPDATE serious_game
+                        set heuristic_status = "S"
+                        WHERE cod_sg = ?`
+    let update_value = [cod_sg_value];
+
 
     execSQLQuery(query, values)
         .then(dbResponse => {
-            res.redirect('/devreport');
+            execSQLQuery(update_query, update_value)
+                .then(dbResponse => {
+                    req.session.cod_sg = null;
+                    res.redirect('/devreport');
+                })            
         })
         .catch(error => {
             res.redirect('/gamepanel');
@@ -141,10 +155,6 @@ router.post('/heuristicform', (req, res) => {
                 content: 'Algo deu errado com o envio do formulário de heurísticas, tente novamente!'
             });
         });
-
-
-
-    res.redirect('/formsuccess');
 })
 
 router.post('/register', redirectGamePanel, (req, res) => {
