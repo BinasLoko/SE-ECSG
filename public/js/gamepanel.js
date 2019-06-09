@@ -1,13 +1,11 @@
 $(document).ready(function () {
     
     function changeButtons() {
-
-        $('.status').forEach(element => {
-            if($('.status')){
-
+        
+            if($('.status').html() == "Preenchido"){
+                $('.status').parent().find('.button').hide();
             }
-        });
-
+        
         
     }
     changeButtons();
