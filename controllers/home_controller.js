@@ -142,7 +142,7 @@ router.post('/heuristicform', (req, res) => {
         .then(dbResponse => {
             execSQLQuery(update_query, update_value)
                 .then(dbResponse => {
-                    req.session.cod_sg = null;
+                    
                     res.redirect('/devreport');
                 })            
         })
@@ -219,8 +219,32 @@ router.post('/register', redirectGamePanel, (req, res) => {
 router.get('/login', redirectGamePanel, (req, res) =>
     res.render('../views/login.ejs'));
 
-router.get('/devreport', redirectLogin, (req, res) =>
-    res.render('../views/devreport.ejs'));
+router.get('/devreport', redirectLogin, (req, res) => {
+    //todo trocar o valor para o codigo do sg ao invés de 1. mockado para finalizar
+    let cod_sg = 1;
+    let heuristic_values = [];
+    let selectQuery = `SELECT * 
+                        FROM formulario
+                        WHERE cod_sg = ?`
+
+    let queryValues = [cod_sg];
+
+    execSQLQuery(selectQuery, queryValues)
+        .then(dbResponse => {
+            heuristic_values = dbResponse[0].heuristic_responses;
+            console.log(heuristic_values);
+            res.render('../views/devreport.ejs', { 'heuristic_values': heuristic_values });
+        })
+        .catch(error => {
+            console.log(error);
+            console.log(req.session.userId);
+            res.json('fuck');
+        });
+
+    /* req.session.cod_sg = null; */
+
+    res.render('../views/devreport.ejs');
+});
 
 module.exports = router;
 
