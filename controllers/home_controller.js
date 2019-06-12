@@ -241,9 +241,9 @@ router.get('/devreport', redirectLogin, (req, res) => {
             res.json('fuck');
         });
 
-    /* req.session.cod_sg = null; */
+    req.session.cod_sg = null; 
 
-    res.render('../views/devreport.ejs');
+    
 });
 
 module.exports = router;
